@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --color-soft-silver: #E1E4E8;
+  --color-charcoal-house: #2D2D2D;
+  --color-emerald-leaf: #4BAE4F;
+  --color-royal-amethyst: #9B5FB5;
+  --color-cherry-blaze: #E23B3B;
+  --color-golden-block: #F2C94C;
+}
