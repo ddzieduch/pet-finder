@@ -1,14 +1,14 @@
-import React, { ReactNode } from "react";
-import Head from "next/head";
-import Header from "./Header";
-import Footer from "./Footer"
+import React, { ReactNode } from 'react';
+import Head from 'next/head';
+import Header from './Header';
+import Footer from './Footer';
 
 type Props = {
   children?: ReactNode;
   title?: string;
 };
 
-const Layout = ({ children, title = "This is the default title" }: Props) => (
+const Layout = ({ children, title = 'This is the default title' }: Props) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -16,7 +16,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Header />
-    {children}
+    <main className="lg:px-8">{children}</main>
     <Footer />
   </div>
 );

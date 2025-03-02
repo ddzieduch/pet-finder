@@ -1,19 +1,17 @@
-import * as React from "react";
-import ListItem from "./ListItem";
-import { Pets } from "../interfaces";
+import * as React from 'react';
+import { Pets } from '../interfaces';
+import PetCard from './PetCard';
 
 type Props = {
   items: Pets[];
 };
 
 const List = ({ items }: Props) => (
-  <ul>
+  <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
     {items.map((item) => (
-      <li key={item.id}>
-        <ListItem data={item} />
-      </li>
+      <PetCard key={item.id} data={item} />
     ))}
-  </ul>
+  </div>
 );
 
 export default List;
