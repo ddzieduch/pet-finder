@@ -4,7 +4,7 @@
 //
 // import { Pets } from 'path/to/interfaces';
 
-export interface AnimalResponse {
+export interface PetsResponse {
   animals: Pets[];
   pagination: Pagination;
 };
