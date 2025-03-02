@@ -1,4 +1,5 @@
 import { PetsResponse } from '../interfaces';
+import { TypesResponse } from '../interfaces/types';
 
 const PETFINDER_API_URL = process.env.PETFINDER_API_URL;
 const CLIENT_ID = process.env.PETFINDER_CLIENT_ID;
@@ -28,6 +29,19 @@ export const fetchPets = async (): Promise<PetsResponse> => {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  return response.json();
+};
+
+export const fetchTypes = async (): Promise<TypesResponse> => {
+  const access_token = await fetchToken();
+
+  const response = await fetch(`${PETFINDER_API_URL}/types`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${access_token}`,
     },
   });
 
