@@ -16,7 +16,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Header />
-    <main className="lg:px-8">{children}</main>
+    <main className="px-4 lg:px-8">{children}</main>
     <Footer />
   </div>
 );

@@ -12,7 +12,7 @@ type Props = {
 
 const WithStaticProps = ({ items }: Props) => (
   <Layout title="Pets List">
-    <h1>Pets List</h1>
+    <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">Pets List</h1>
     <List items={items} />
     <p>
       <Link href="/">Go home</Link>
