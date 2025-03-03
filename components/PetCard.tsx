@@ -22,7 +22,7 @@ const PetCard = ({ data }: Props) => {
           {data.type}, {data.name}
         </h3>
         <p className="flex-grow">{data.description && he.decode(he.decode(data.description))}</p>
-        <div className="self-start flex flex-wrap gap-6 mt-4 text-cherry-blaze">
+        <div className="self-start flex flex-wrap gap-4 mt-4 text-cherry-blaze">
           <div>Age: {data.age}</div>
           <div>Gender: {data.gender}</div>
           <div>Size: {data.size}</div>
