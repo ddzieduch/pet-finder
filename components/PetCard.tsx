@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'
 import he from 'he';
 import { Pets } from '../interfaces';
 
@@ -13,9 +14,12 @@ const PetCard = ({ data }: Props) => {
       as={`/pets/${data.id}`}
       className="flex max-w-xl flex-grow flex-col items-start justify-between rounded-2xl ring-10 ring-charcoal-house/10 drop-shadow-xl"
     >
-      <img
+      <Image
         className="aspect-square w-full rounded-t-2xl bg-soft-silver object-cover"
         src={data.primary_photo_cropped?.small}
+        alt={data.name}
+        width={300}
+        height={300}
       />
       <div className="w-full flex flex-col flex-grow p-5 cherry-blaze rounded-b-2xl bg-charcoal-house">
         <h3 className="text-base font-semibold text-golden-block">
