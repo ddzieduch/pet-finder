@@ -1,6 +1,12 @@
 import Link from 'next/link';
 
 const Header = () => {
+  const navElements = [
+    { href: '/', name: 'Main' },
+    { href: '/about', name: 'About' },
+    { href: '/pets', name: 'Pets List' },
+    { href: '/api/pets', name: 'Pets API' },
+  ];
   return (
     <header>
       <nav className="mx-auto flex max-w-7xl items-right justify-between p-6 lg:px-8">
@@ -10,9 +16,10 @@ const Header = () => {
             <img alt="PetFinder" className="h-16 w-auto" src="/PetFinder.svg" />
           </Link>
         </div>
-        <div className="lg:flex lg:gap-x-12">
-          <Link href="/">Home</Link> | <Link href="/about">About</Link> | <Link href="/pets">Pets List</Link> |{' '}
-          <a href="/api/pets">Pets API</a>
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navElements.map((nav) => (
+            <Link href={nav.href}>{nav.name}</Link>
+          ))}
         </div>
       </nav>
     </header>
