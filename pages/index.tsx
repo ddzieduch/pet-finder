@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Layout from '../components/Layout';
@@ -5,7 +6,7 @@ import Layout from '../components/Layout';
 import { Types } from '../interfaces/types';
 import { sampleTypeData } from '../utils/sample-types';
 import Search from '../components/Search';
-import { useState } from 'react';
+import { mapOptionsWithDefault, mapOptionsWithDefaultNested } from '../utils';
 
 interface Props {
   items: Types[];
@@ -18,9 +19,7 @@ interface MappedTypes extends Types {
 }
 
 const IndexPage = ({ items }: Props) => {
-  const types = items.map((item, id) => {
-    return { id, icon: '', ...item };
-  });
+  const types = mapOptionsWithDefaultNested(items);
 
   const [selectedAnimal, setSelectedAnimal] = useState<MappedTypes>(types[0]);
   const [selectedCoat, setSelectedCoat] = useState<number>(0);
@@ -35,40 +34,42 @@ const IndexPage = ({ items }: Props) => {
     setSelectedGender(0);
   };
 
+  const animalOptions = mapOptionsWithDefault(items.map((item) => item.name));
+  const coatOptions = mapOptionsWithDefault(selectedAnimal?.coats);
+  const colorOptions = mapOptionsWithDefault(selectedAnimal?.colors);
+  const genderOptions = mapOptionsWithDefault(selectedAnimal?.genders);
+
+  const isDisabled = selectedAnimal.id === 0;
+
   return (
     <Layout title="Home">
       <h1>Hello PetFinder 👋</h1>
 
       <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-        <Search
-          label="Animal Type"
-          options={items.map((animal, index) => ({ id: index, name: animal.name, icon: '' }))}
-          value={selectedAnimal.id}
-          onChange={handleAnimalChange}
-        />
+        <Search label="Animal Type" options={animalOptions} value={selectedAnimal.id} onChange={handleAnimalChange} />
 
         <Search
           label="Coat"
-          options={(selectedAnimal?.coats || []).map((coat, index) => ({ id: index, name: coat, icon: '' }))}
+          options={coatOptions}
           value={selectedCoat}
           onChange={setSelectedCoat}
-          disabled={!selectedAnimal || selectedAnimal.coats.length === 0}
+          disabled={isDisabled}
         />
 
         <Search
           label="Color"
-          options={(selectedAnimal?.colors || []).map((color, index) => ({ id: index, name: color, icon: '' }))}
+          options={colorOptions}
           value={selectedColor}
           onChange={setSelectedColor}
-          disabled={!selectedAnimal}
+          disabled={isDisabled}
         />
 
         <Search
           label="Gender"
-          options={(selectedAnimal?.genders || []).map((gender, index) => ({ id: index, name: gender, icon: '' }))}
+          options={genderOptions}
           value={selectedGender}
           onChange={setSelectedGender}
-          disabled={!selectedAnimal}
+          disabled={isDisabled}
         />
       </div>
       <p>
