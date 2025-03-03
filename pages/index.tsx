@@ -4,12 +4,15 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 
 import { Types } from '../interfaces/types';
-import { sampleTypeData } from '../utils/sample-types';
+import { Pets } from '../interfaces';
 import Search from '../components/Search';
+import List from '../components/List';
 import { mapOptionsWithDefault, mapOptionsWithDefaultNested } from '../utils';
+import { fetchPets, fetchTypes } from '../lib/petfinder';
 
 interface Props {
   items: Types[];
+  pets: Pets[];
 }
 
 interface MappedTypes extends Types {
@@ -18,7 +21,7 @@ interface MappedTypes extends Types {
   icon: string;
 }
 
-const IndexPage = ({ items }: Props) => {
+const IndexPage = ({ items, pets }: Props) => {
   const types = mapOptionsWithDefaultNested(items);
 
   const [selectedAnimal, setSelectedAnimal] = useState<MappedTypes>(types[0]);
@@ -43,7 +46,9 @@ const IndexPage = ({ items }: Props) => {
 
   return (
     <Layout title="Home">
-      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">Hello PetFinder 👋</h1>
+      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+        Hello PetFinder 👋
+      </h1>
 
       <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-16 sm:pt-16 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
         <Search label="Animal Type" options={animalOptions} value={selectedAnimal.id} onChange={handleAnimalChange} />
@@ -72,6 +77,9 @@ const IndexPage = ({ items }: Props) => {
           disabled={isDisabled}
         />
       </div>
+
+      <List items={pets} />
+
       <p>
         <Link href="/about">About</Link>
       </p>
@@ -84,11 +92,11 @@ export const getStaticProps: GetStaticProps = async () => {
   // Don't forget to include the respective types for any props passed into
   // the component.
 
-  // const types = await fetchTypes()
+  const types = await fetchTypes();
 
-  const items: Types[] = sampleTypeData;
+  const pets = await fetchPets();
 
-  return { props: { items } };
+  return { props: { items: types.types, pets: pets.animals } };
 };
 
 export default IndexPage;
