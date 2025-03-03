@@ -21,9 +21,9 @@ const Search = ({ label, options, value, onChange, disabled }: Props) => {
   return (
     <Listbox value={value} onChange={onChange} disabled={disabled}>
       <div>
-        <Label className="block text-sm/6 font-medium text-gray-900">{label}: </Label>
+        <Label className="block text-sm/6 font-medium text-charcoal-house">{label}: </Label>
         <div className="relative mt-2">
-          <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-golden-block sm:text-sm/6">
+          <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-charcoal-house outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-golden-block sm:text-sm/6">
             <span className="col-start-1 row-start-1 flex items-center gap-3 pr-6">
               <img alt="" src={selected.icon} className="size-5 shrink-0 rounded-full" />
               <span className="block truncate">{selected.name}</span>
@@ -42,7 +42,7 @@ const Search = ({ label, options, value, onChange, disabled }: Props) => {
               <ListboxOption
                 key={option.id}
                 value={option.id}
-                className="group relative cursor-default py-2 pr-9 pl-3 text-gray-900 select-none data-focus:bg-golden-block data-focus:text-white data-focus:outline-hidden"
+                className="group relative cursor-default py-2 pr-9 pl-3 text-charcoal-house select-none data-focus:bg-golden-block data-focus:text-white data-focus:outline-hidden"
               >
                 <div className="flex items-center">
                   <img alt="" src={option.icon} className="size-5 shrink-0 rounded-full" />

@@ -17,12 +17,12 @@ const PetCard = ({ data }: Props) => {
         className="aspect-square w-full rounded-t-2xl bg-soft-silver object-cover"
         src={data.primary_photo_cropped?.small}
       />
-      <div className="w-full flex flex-col flex-grow p-5 cherry-blaze rounded-b-2xl bg-white">
-        <h3 className="text-base font-semibold text-cherry-blaze">
+      <div className="w-full flex flex-col flex-grow p-5 cherry-blaze rounded-b-2xl bg-charcoal-house">
+        <h3 className="text-base font-semibold text-golden-block">
           {data.type}, {data.name}
         </h3>
-        <p className="flex-grow">{data.description && he.decode(he.decode(data.description))}</p>
-        <div className="self-start flex flex-wrap gap-4 mt-4 text-cherry-blaze">
+        <p className="flex-grow text-soft-silver">{data.description && he.decode(he.decode(data.description))}</p>
+        <div className="self-start flex flex-wrap gap-4 mt-4 text-golden-block">
           <div>Age: {data.age}</div>
           <div>Gender: {data.gender}</div>
           <div>Size: {data.size}</div>
