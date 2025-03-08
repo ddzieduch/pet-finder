@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
-import { ChevronUpDownIcon } from '@heroicons/react/16/solid';
-import { CheckIcon } from '@heroicons/react/20/solid';
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
 interface Props {
   label: string;

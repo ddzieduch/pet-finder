@@ -3,8 +3,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
-import { Types } from '../interfaces/types';
-import { Pets } from '../interfaces';
+import { Pets, Types } from '../interfaces';
 import Search from '../components/Search';
 import List from '../components/List';
 import { mapOptionsWithDefault, mapOptionsWithDefaultNested } from '../utils';

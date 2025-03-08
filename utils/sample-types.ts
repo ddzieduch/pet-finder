@@ -1,4 +1,4 @@
-import { Types } from '../interfaces/types';
+import { Types } from '../interfaces';
 
 export const sampleTypeData: Types[] = [
   {
