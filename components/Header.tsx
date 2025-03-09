@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+  const pathname = usePathname();
+
   const navElements = [
     { href: '/', name: 'Main' },
     { href: '/about', name: 'About' },
@@ -16,9 +19,11 @@ const Header = () => {
             <img alt="PetFinder" className="h-16 w-auto" src="/PetFinder.svg" />
           </Link>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden items-center lg:flex lg:gap-x-12">
           {navElements.map((nav) => (
-            <Link href={nav.href}>{nav.name}</Link>
+            <Link href={nav.href} className={`${pathname === nav.href ? 'border-b-3 font-bold' : ''}`}>
+              {nav.name}
+            </Link>
           ))}
         </div>
       </nav>
